@@ -80,13 +80,15 @@ func main() {
 	// Route Handlers / Endpoints
 	r.HandleFunc("/api/books", getBooks).Methods("GET")
 	r.HandleFunc("/api/books/{id}", getBook).Methods("GET")
-	
+
+	//Using curl for POST, PUT and DELETE requests
+
 	//curl -i -X POST -H 'Content-Type: application/json' -d '{"isbn": "213213", "title": "Book three", "author" : {"firstname": "Carol", "lastname": "Williams"} }' http://localhost:8000/api/books
 	r.HandleFunc("/api/books", createBook).Methods("POST")
-	
+
 	//curl -i -X PUT -H 'Content-Type: application/json' -d '{"isbn": "213213", "title": "Book three", "author" : {"firstname": "Carol", "lastname": "Williams"} }' http://localhost:8000/api/books/2
 	r.HandleFunc("/api/books/{id}", updateBook).Methods("PUT")
-	
+
 	//curl -i -X DELETE http://localhost:8000/api/books/1
 	r.HandleFunc("/api/books/{id}", deleteBook).Methods("DELETE")
 
